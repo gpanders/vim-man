@@ -17,7 +17,7 @@ setlocal iskeyword+=\.,-
 let b:undo_ftplugin = 'setlocal iskeyword<'
 
 " Add mappings, unless the user didn't want this.
-if !exists('g:no_plugin_maps') && !exists('g:no_man_maps')
+if !exists('no_plugin_maps') && !exists('no_man_maps')
   nnoremap <buffer> <silent> <Plug>(ManBS) :setl ma<Bar>%s/.\b//ge<Bar>setl noma nomod<CR>''
   nnoremap <buffer> <silent> <C-]> :call man#pre_get_page(v:count)<CR>
   nnoremap <buffer> <silent> <C-T> :call man#pop_page()<CR>
@@ -31,7 +31,7 @@ if !exists('g:no_plugin_maps') && !exists('g:no_man_maps')
 	\ . '|sil! nun <buffer> q'
 endif
 
-if exists('g:ft_man_folding_enable') && g:ft_man_folding_enable == 1
+if get(g:, 'ft_man_folding_enable', 0)
   setlocal foldmethod=indent foldnestmax=1 foldenable
   let b:undo_ftplugin .= '|sil! setl fdm< fdn< fen<'
 endif

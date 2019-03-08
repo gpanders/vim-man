@@ -36,6 +36,11 @@ nmap <Leader>K <Plug>(ManPreGetPage)
 nmap <buffer> <LocalLeader>h <Plug>(ManBS)
 ```
 
+To enable folding in man pages, put the following in your `vimrc`:
+```vim
+let g:ft_man_folding_enable = 1
+```
+
 ## Credit
 
 SungHyun Nam did the bulk of the work in creating and writing the man ftplugin
