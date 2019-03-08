@@ -17,9 +17,9 @@ let b:undo_ftplugin = 'setlocal iskeyword<'
 
 " Add mappings, unless the user didn't want this.
 if !exists('g:no_plugin_maps') && !exists('g:no_man_maps')
-  nnoremap <buffer> <Plug>(ManBS) :%s/.\b//ge<CR>:setl nomod<CR>''
-  nnoremap <buffer> <C-]> :call man#pre_get_page(v:count)<CR>
-  nnoremap <buffer> <C-T> :call man#pop_page()<CR>
+  nnoremap <buffer> <silent> <Plug>(ManBS) :setl ma<Bar>%s/.\b//ge<Bar>setl noma nomod<CR>''
+  nnoremap <buffer> <silent> <C-]> :call man#pre_get_page(v:count)<CR>
+  nnoremap <buffer> <silent> <C-T> :call man#pop_page()<CR>
   nnoremap <buffer> <silent> q :q<CR>
 
   " Add undo commands for the maps
