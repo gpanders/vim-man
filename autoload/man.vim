@@ -40,19 +40,29 @@ function! man#pre_get_page(cnt)
   call man#get_page(sect, page)
 endfunction
 
-function! man#pop_page()
-  if s:man_tag_depth > 0
-    let s:man_tag_depth = s:man_tag_depth - 1
-    execute 'let s:man_tag_buf = s:man_tag_buf_' . s:man_tag_depth
-    execute 'let s:man_tag_lin = s:man_tag_lin_' . s:man_tag_depth
-    execute 'let s:man_tag_col = s:man_tag_col_' . s:man_tag_depth
+function! man#pop_page(cnt)
+  let cnt = max([a:cnt, 1])
+  if cnt >= s:man_tag_depth
+    echohl WarningMsg
+    echo 'At bottom of tag stack'
+    let cnt = s:man_tag_depth - 1
+  endif
+
+  if cnt
+    let new_man_tag_depth = s:man_tag_depth - cnt
+    execute 'let s:man_tag_buf = s:man_tag_buf_' . new_man_tag_depth
+    execute 'let s:man_tag_lin = s:man_tag_lin_' . new_man_tag_depth
+    execute 'let s:man_tag_col = s:man_tag_col_' . new_man_tag_depth
     execute s:man_tag_buf . 'b'
     execute s:man_tag_lin
     execute 'normal! ' . s:man_tag_col . '|'
-    execute 'unlet s:man_tag_buf_' . s:man_tag_depth
-    execute 'unlet s:man_tag_lin_' . s:man_tag_depth
-    execute 'unlet s:man_tag_col_' . s:man_tag_depth
+    for n in range(new_man_tag_depth, s:man_tag_depth-1)
+      execute 'unlet s:man_tag_buf_' . n
+      execute 'unlet s:man_tag_lin_' . n
+      execute 'unlet s:man_tag_col_' . n
+    endfor
     unlet s:man_tag_buf s:man_tag_lin s:man_tag_col
+    let s:man_tag_depth = new_man_tag_depth
   endif
 endfunction
 
