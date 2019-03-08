@@ -1,4 +1,7 @@
 " Define Man command if it doesn't already exist
+" Author: Greg Anders
+" License: Same as vim (see :h license)
+
 if exists(":Man") == 2
   finish
 endif

@@ -2,6 +2,7 @@
 " Modified By: Greg Anders <greg@gpanders.com>
 " Original Author: SungHyun Nam <goweol@gmail.com>
 " Last Change: 2019-03-06
+" License: Same as vim (see :h license)
 
 if exists('b:did_ftplugin')
   finish

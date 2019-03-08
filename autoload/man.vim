@@ -2,6 +2,7 @@
 " Modified By: Greg Anders <greg@gpanders.com>
 " Original Author: SungHyun Nam <goweol@gmail.com>
 " Date: 2019-03-06
+" License: Same as vim (see :h license)
 
 let s:man_tag_depth = 0
 

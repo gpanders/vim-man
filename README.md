@@ -40,3 +40,7 @@ nmap <buffer> <LocalLeader>h <Plug>(ManBS)
 
 SungHyun Nam did the bulk of the work in creating and writing the man ftplugin
 and the `:Man` command.
+
+## License
+
+Distributed under the same terms as Vim itself. See `:help license`.
