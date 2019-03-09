@@ -4,6 +4,11 @@
 " Last Change: 2019-03-06
 " License: Same as vim (see :h license)
 
+" Neovim has its own :Man implementation, so don't load ours
+if has('nvim')
+  finish
+endif
+
 if exists('b:did_ftplugin')
   finish
 endif
