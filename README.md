@@ -2,6 +2,30 @@
 
 Read man pages in vim.
 
+## Note for neovim users
+
+neovim contains an autoloaded implementation of `:Man` already, so this plugin
+is not only unnecessary but will in fact conflict with neovim's native
+implementation.
+
+If you use a common config for both vim and neovim, make sure you only load this
+plugin if `has('nvim')` is false.
+
+For example, you could use the following in your vimrc:
+
+```vim
+" With vim-plug
+if !has('nvim')
+    Plug 'gpanders/vim-man'
+endif
+
+" With native vim packages
+" Place vim-man under ~/.vim/pack/gpanders/opt/, then use:
+if !has('nvim')
+    packadd vim-man
+endif
+```
+
 ## Motivation
 This is a modification of the man ftplugin that is included in Vim, written by
 SungHyun Nam. That ftplugin supplied a `:Man` command that allowed you to find
